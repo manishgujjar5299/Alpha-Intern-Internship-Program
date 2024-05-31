@@ -9,32 +9,77 @@
 </head>
 <body>
   <header>
-    <nav>
-      <div class="logo">
-        <img src="logo.png" alt="Spotify Logo">
-      </div>
-      <div class="search-bar">
-        <input type="text" placeholder="Search...">
-      </div>
-      <div class="nav-links">
-        <a href="#">Premium</a>
-        <a href="#">Help</a>
-        <a href="#">Download</a>
-        <a href="#" id="profile-link">Username</a>
-      </div>
-    </nav>
+    <nav class="fixed-header">
+        <div class="logo">
+          <img src="logo.png" alt="Spotify Logo">
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Search...">
+        </div>
+        <div class="nav-links">
+          <a href="#">Premium</a>
+          <a href="#">Help</a>
+          <a href="#">Download</a>
+          <a href="#" id="profile-link">Username</a>
+        </div>
+      </nav>
   </header>
   
   <div class="main-content">
     <aside class="sidebar">
-      <ul>
-        <li><a href="#" id="home-link">Home</a></li>
-        <li><a href="#" id="search-link">Search</a></li>
-        <li><a href="#" id="library-link">Your Library</a></li>
-        <li><a href="#">Create Playlist</a></li>
-        <li><a href="#">Liked Songs</a></li>
-      </ul>
+      <nav class="navbar">
+        <ul>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-home"></i>
+              <span>Home</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-search"></i>
+              <span>Search</span>
+            </a>
+          </li>
+        </ul>
+        <ul class="library">
+          <li class="nav-item2">
+            <a href="#" class="nav-link2" id="musiclibrary">
+              <i class="fas fa-music music-library-icon"></i>
+              <span id="musicspan">Expand Library</span>
+            </a>
+          </li>
+          <li class="nav-item2">
+            <img src="img/likedsongs.png" alt="Liked Songs Icon" class="nav-link2">
+            <span id="likedsongs">Liked songs</span>
+          </li>
+        </ul>
+      </nav>
     </aside>
+
+    <!-- New Library Section -->
+    <div class="left">
+        <div class="library">
+          <ul>
+            <li><i class="fas fa-music"></i> Your Library</li>
+          </ul>
+          <div class="tabs">
+            <button class="playlist">Playlists</button>
+            <button class="artist">Artists</button>
+          </div>
+          <div class="playlist">
+            <div class="playlist-img">
+              <img class="myplaylist" src="images/likebutton.png" alt="Liked Songs">
+              <h5>Liked Songs</h5>
+            </div>
+            <div class="playlist-details">
+              <p>Playlist &bull; 23 songs</p>
+            </div>
+          </div>
+          <!-- Repeat similar blocks for other playlists and artists -->
+        </div>
+      </div>
+      <!-- End of New Library Section -->
     <main>
       <section class="playlist" id="playlist-section">
         <h2>Top Trending India</h2>

@@ -160,3 +160,12 @@ document.addEventListener('DOMContentLoaded', function() {
         playSong(songs[currentSongIndex]);
     });
 });
+// document.getElementById('musiclibrary').addEventListener('click', function() {
+//     var librarySection = document.querySelector('.left .library');
+//     if (librarySection.style.display === 'none' || librarySection.style.display === '') {
+//       librarySection.style.display = 'block';
+//     } else {
+//       librarySection.style.display = 'none';
+//     }
+//   });
+  
