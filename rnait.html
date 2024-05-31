@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Profile</title>
+    <link rel="stylesheet" href="rn1.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <button class="back-button"><a href="index.html">⟵</a></button>
+            <img src="img8.jpg" alt="R Nait" class="artist-image">
+            <div class="artist-info">
+                
+                <span class="verified-artist">✔️ Verified Artist</span>
+                <h1>R Nait</h1>
+                <p class="monthly-listeners">3,308,107 monthly listeners</p>
+            </div>
+            <button class="explore-button">Explore Premium</button>
+        </header>
+        <main>
+            <section class="popular">
+                <h2>Popular</h2>
+                <ul>
+                    <li>
+                        <button class="play-button" onclick="playSong('struggler')">▶</button>
+                        <span class="song-name">struggler</span>
+                        <span class="song-plays">35,670,286</span>
+                        <span class="song-duration">4:55</span>
+                    </li>
+                    <li>
+                        <button class="play-button" onclick="playSong('defaulter')">▶</button>
+                        <span class="song-name">defaulter</span>
+                        <span class="song-plays">31,914,776</span>
+                        <span class="song-duration">3:20</span>
+                    </li>
+                    <li>
+                        <button class="play-button" onclick="playSong('big men')">▶</button>
+                        <span class="song-name">big men</span>
+                        <span class="song-plays">30,954,676</span>
+                        <span class="song-duration">3:29</span>
+                    </li>
+                    <li>
+                        <button class="play-button" onclick="playSong('dabda kithe aa')">▶</button>
+                        <span class="song-name">dabda kithe aa</span>
+                        <span class="song-plays">38,914,776</span>
+                        <span class="song-duration">4:03</span>
+                    </li>
+                </ul>
+            </section>
+            <section class="liked-songs">
+                <h2>Liked Songs</h2>
+                <p>You've liked 1 song</p>
+            </section>
+            <!-- <section class="artist-pick">
+                <h2>Artist pick</h2>
+                <div class="pick-item">
+                    <img src="vailpuna.jpg" alt="Vailpuna">
+                    <span class="pick-title">Vailpuna (From "Je Jatt Vigarh Gya")</span>
+                    <span class="pick-type">Single</span>
+                </div>
+            </section> -->
+        </main>
+    </div>
+    <audio id="audio-player" controls>
+        <source id="audio-source" src="" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <script src="rn2.js"></script>
+</body>
+</html>
