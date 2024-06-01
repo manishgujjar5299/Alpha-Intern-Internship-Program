@@ -49,7 +49,8 @@ nav.fixed-header {
 
 .sidebar {
     width: 150px;
-    background-color: #282828;
+    background-color: #121212;
+    color: white;
     padding: 20px;
     height: calc(100vh - 60px); /* Adjust this value to the height of your header */
     overflow-y: auto;
@@ -70,11 +71,89 @@ nav.fixed-header {
     color: white;
     display: flex;
     align-items: center;
+    width: 50px;
+    
 }
 
 .nav-link i, .nav-link2 i{
     margin-bottom: 10px;
+   
 }
+/* Existing styles */
+
+/* New styles for the library section */
+.sidebar .library-content {
+    display: none;
+    padding: 10px;
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  .sidebar .library-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar .library-content ul li {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    cursor: pointer;
+  }
+  
+  .sidebar .library-content ul li i {
+    margin-right: 10px;
+  }
+  
+  .sidebar .library-content .tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .sidebar .library-content .tabs button {
+    background-color: #535353;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .sidebar .library-content .tabs button.active {
+    background-color: #1DB954;
+  }
+  
+  .sidebar .library-content .playlist {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .sidebar .library-content .playlist .playlist-img {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+  
+  .sidebar .library-content .playlist .playlist-img img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .sidebar .library-content .playlist .playlist-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sidebar .library-content .playlist .playlist-details p {
+    margin: 0;
+    color: #b3b3b3;
+    font-size: 14px;
+  }
+  
 
 main {
     flex: 1;
@@ -385,3 +464,4 @@ footer {
     margin-right: 10px;
     border-radius: 5px;
 }
+ 

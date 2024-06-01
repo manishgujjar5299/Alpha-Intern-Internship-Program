@@ -8,7 +8,10 @@ let currentSongIndex = 0;
 function playSong(songId) {
     const audioPlayer = document.getElementById('audio-player');
     const audioSource = document.getElementById('audio-source');
+    const currentSongElement = document.getElementById('current-song'); // Get the element to display the current song
+
     let songPath = '';
+    let songName = ''; // Variable to store the song name
 
     switch(songId) {
         case 'bhabi':
@@ -31,6 +34,10 @@ function playSong(songId) {
     audioSource.src = songPath;
     audioPlayer.load();
     audioPlayer.play();
+
+    // Update the current song element with the song name
+    currentSongElement.textContent = `Now playing: ${songName}`;
+
 
     console.log('Playing song:', songId);
     console.log('Audio source:', audioSource.src);
