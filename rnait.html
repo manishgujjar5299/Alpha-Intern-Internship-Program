@@ -23,25 +23,25 @@
             <section class="popular">
                 <h2>Popular</h2>
                 <ul>
-                    <li>
+                    <li id="struggler">
                         <button class="play-button" onclick="playSong('struggler')">▶</button>
                         <span class="song-name">struggler</span>
                         <span class="song-plays">35,670,286</span>
                         <span class="song-duration">4:55</span>
                     </li>
-                    <li>
+                    <li id="defaulter">
                         <button class="play-button" onclick="playSong('defaulter')">▶</button>
                         <span class="song-name">defaulter</span>
                         <span class="song-plays">31,914,776</span>
                         <span class="song-duration">3:20</span>
                     </li>
-                    <li>
+                    <li id="big men">
                         <button class="play-button" onclick="playSong('big men')">▶</button>
                         <span class="song-name">big men</span>
                         <span class="song-plays">30,954,676</span>
                         <span class="song-duration">3:29</span>
                     </li>
-                    <li>
+                    <li id="dabda kithe aa">
                         <button class="play-button" onclick="playSong('dabda kithe aa')">▶</button>
                         <span class="song-name">dabda kithe aa</span>
                         <span class="song-plays">38,914,776</span>
@@ -61,6 +61,8 @@
                     <span class="pick-type">Single</span>
                 </div>
             </section> -->
+            <div id="current-song" class="current-song"></div> <!-- New element for displaying the current song -->
+      
         </main>
     </div>
     <audio id="audio-player" controls>

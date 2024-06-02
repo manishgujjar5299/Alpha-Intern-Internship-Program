@@ -23,27 +23,27 @@
             <section class="popular">
                 <h2>Popular</h2>
                 <ul>
-                    <li>
+                    <li id="tareefan">
                         <button class="play-button" onclick="playSong('tareefan')">▶</button>
-                        <span class="song-name">Tareefan</span>
+                        <span class="song-name">tareefan</span>
                         <span class="song-plays">35,670,286</span>
                         <span class="song-duration">3:12</span>
                     </li>
-                    <li>
-                        <button class="play-button" onclick="playSong('tuteSharab')">▶</button>
-                        <span class="song-name">Tu Te Sharab</span>
+                    <li id="tu te Sharab">
+                        <button class="play-button" onclick="playSong('tu te Sharab')">▶</button>
+                        <span class="song-name">tu te Sharab</span>
                         <span class="song-plays">31,914,776</span>
                         <span class="song-duration">3:16</span>
                     </li>
-                    <li>
+                    <li id="snowfall">
                         <button class="play-button" onclick="playSong('snowfall')">▶</button>
-                        <span class="song-name">Snowfall</span>
+                        <span class="song-name">snowfall</span>
                         <span class="song-plays">30,954,676</span>
                         <span class="song-duration">3:00</span>
                     </li>
-                    <li>
+                    <li id="enemy">
                         <button class="play-button" onclick="playSong('enemy')">▶</button>
-                        <span class="song-name">Enemy</span>
+                        <span class="song-name">enemy</span>
                         <span class="song-plays">38,914,776</span>
                         <span class="song-duration">2:55</span>
                     </li>
@@ -61,6 +61,8 @@
                     <span class="pick-type">Single</span>
                 </div>
             </section> -->
+            <div id="current-song" class="current-song"></div> <!-- New element for displaying the current song -->
+      
         </main>
     </div>
     <audio id="audio-player" controls>

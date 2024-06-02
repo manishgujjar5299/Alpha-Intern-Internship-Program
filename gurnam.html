@@ -23,27 +23,27 @@
             <section class="popular">
                 <h2>Popular</h2>
                 <ul>
-                    <li>
+                    <li id="diamond">
                         <button class="play-button" onclick="playSong('diamond')">▶</button>
                         <span class="song-name">diamond</span>
                         <span class="song-plays">35,670,286</span>
                         <span class="song-duration">4:00</span>
                     </li>
-                    <li>
+                    <li id="ikk number">
                         <button class="play-button" onclick="playSong('ikk number')">▶</button>
                         <span class="song-name">ikk number</span>
                         <span class="song-plays">31,914,776</span>
                         <span class="song-duration">3:02</span>
                     </li>
-                    <li>
+                    <li id="pasand bangi">
                         <button class="play-button" onclick="playSong('pasand bangi')">▶</button>
                         <span class="song-name">pasand bangi</span>
                         <span class="song-plays">30,954,676</span>
                         <span class="song-duration">3:45</span>
                     </li>
-                    <li>
-                        <button class="play-button" onclick="playSong('phone mar di')">▶</button>
-                        <span class="song-name">phone mar di</span>
+                    <li id="phone maar di">
+                        <button class="play-button" onclick="playSong('phone maar di')">▶</button>
+                        <span class="song-name">phone maar di</span>
                         <span class="song-plays">38,914,776</span>
                         <span class="song-duration">4:09</span>
                     </li>
@@ -61,6 +61,9 @@
                     <span class="pick-type">Single</span>
                 </div>
             </section> -->
+
+            <div id="current-song" class="current-song"></div> <!-- New element for displaying the current song -->
+
         </main>
     </div>
     <audio id="audio-player" controls>

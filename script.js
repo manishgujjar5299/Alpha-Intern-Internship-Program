@@ -8,13 +8,18 @@ let currentSongIndex = 0;
 function playSong(songId) {
     const audioPlayer = document.getElementById('audio-player');
     const audioSource = document.getElementById('audio-source');
+    const currentSongElement = document.getElementById('current-song'); // Get the element to display the current song
+
+   
     let songPath = '';
+    let songName = ''; // Variable to store the song name
+
 
     switch(songId) {
         case 'tareefan':
             songPath = 'music/Tareefan Jordan Sandhu 320 Kbps.mp3';  // Replace with actual path
             break;
-        case 'tuteSharab':
+        case 'tu te Sharab':
             songPath = 'music/Tu Te Sharab_320(PagalWorld.com.sb).mp3';  // Replace with actual path
             break;
         case 'snowfall':
@@ -32,9 +37,22 @@ function playSong(songId) {
     audioPlayer.load();
     audioPlayer.play();
 
+     // Update the current song element with the song name
+     currentSongElement.textContent = `Now playing: ${songName}`;
+
+     // Remove 'playing' class from all songs
+     document.querySelectorAll('li').forEach(item => {
+     item.classList.remove('playing');
+     });
+ 
+     // Add 'playing' class to the current song
+     document.getElementById(songId).classList.add('playing');
+ 
+
     console.log('Playing song:', songId);
     console.log('Audio source:', audioSource.src);
 
+    audioPlayer.removeEventListener('ended', playNextSong); // Remove previous event listener
     audioPlayer.addEventListener('ended', playNextSong);
 
     const backButton = document.getElementById('back-button');
