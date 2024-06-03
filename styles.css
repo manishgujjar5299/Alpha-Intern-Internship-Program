@@ -160,11 +160,12 @@ main {
     padding: 20px;
     margin-left: 50px;
     width: 850px;
-    background-color: gray;
+    background-color: ay;
 }
 
 .playlist {
     margin-bottom: 30px;
+    /* background-color: gray; */
     /* background-color:yellowgreen; */
 }
 
@@ -173,7 +174,7 @@ main {
     align-items: center;
     justify-content: space-between;
     padding: 20px;
-    background-color: #282828;
+    background-color: gray;
     border-radius: 8px;
     margin-bottom: 20px;
     color: white;
@@ -215,7 +216,7 @@ main {
 .song-list {
     list-style: none;
     padding: 0;
-    /* background-color: #1DB954; */
+    /* background-color: #454545; */
     width: 50vh;
     height: 80vh;
 }
@@ -382,7 +383,7 @@ footer {
 
 .favorite-artists {
     margin-top: 40px;
-    background-color: #1DB954;
+    background-color: #454545;
     margin-bottom: 150px;
 }
 
@@ -394,7 +395,7 @@ footer {
     /* gap:20px; */
     flex-wrap: wrap;
    justify-content: space-evenly;
-   background-color: aqua;
+   /* background-color: aqua; */
    /* margin-bottom: 150px; */
 }
 
@@ -412,13 +413,14 @@ footer {
     margin-right: 10px;
     margin-bottom: 10px; */
     /* text-align: center; */
-    background-color: white;
+    /* background-color: white; */
     text-decoration: none;
     
 }
 .circle-item p{
     text-decoration: none;
-    background-color: yellow;
+    /* color: #121212; */
+    /* background-color: yellow; */
 }
 
 .circle {
