@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const artistName = document.getElementById('artist-name');
     const albumArt = document.getElementById('album-art');
     const playAllButton = document.getElementById('play-all');
-    const libraryLink = document.getElementById('library-link');
+    // const libraryLink = document.getElementById('library-link');
     const librarySection = document.getElementById('library-section');
     const playlistSection = document.getElementById('playlist-section');
     const songList = document.querySelector('.song-list');
@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const durationElement = document.getElementById('duration');
     const progressBar = document.getElementById('progress-bar');
     const volumeControl = document.getElementById('volume-control');
+    const libraryLink = document.querySelector('.nav-link[onclick="toggleLibraryContent()"]');
+    const libraryContent = document.querySelector('.library-content');
 
     let songs = [
         { title: 'Kinna Sona', artist: 'Marjaavaan', src: 'Kinna Sona Marjaavaan 320 Kbps.mp3', img: 'img3.jpg' },
@@ -146,9 +148,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     libraryLink.addEventListener('click', function() {
-        librarySection.style.display = 'block';
-        playlistSection.style.display = 'none';
+        if (libraryContent.style.display === 'block') {
+          libraryContent.style.display = 'none';
+        } else {
+          libraryContent.style.display = 'block';
+        }
+      });
     });
+    
+    function toggleLibraryContent() {
+      const libraryContent = document.querySelector('.library-content');
+      libraryContent.style.display = libraryContent.style.display === 'none' ? 'block' : 'none';
+    }
 
     volumeControl.addEventListener('input', function() {
         audioPlayer.volume = volumeControl.value / 100;
@@ -159,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
         currentSongIndex = 0;
         playSong(songs[currentSongIndex]);
     });
-});
+
 document.getElementById('musiclibrary').addEventListener('click', function() {
     var librarySection = document.querySelector('.left .library');
     if (librarySection.style.display === 'none' || librarySection.style.display === '') {
