@@ -103,34 +103,3 @@ function updateItemsLeft() {
     const activeTodosCount = todos.filter(todo => !todo.completed).length;
     itemsLeft.textContent = `${activeTodosCount} items left`;
 }
-
-
-// Add swipe-to-delete event listeners
-let xDown = null;
-
-todoList.addEventListener('touchstart', handleTouchStart, false);        
-todoList.addEventListener('touchmove', handleTouchMove, false);
-
-function handleTouchStart(event) {
-    const firstTouch = event.touches[0];                                      
-    xDown = firstTouch.clientX;                                      
-};                                                
-
-function handleTouchMove(event) {
-    if (!xDown) {
-        return;
-    }
-
-    let xUp = event.touches[0].clientX;                                      
-    let xDiff = xUp - xDown;
-
-    if (xDiff > 0) {
-        // Swipe left, delete the todo item
-        const li = event.target.parentElement;
-        deleteTodo(li);
-    } 
-
-    xDown = null;
-};
-
-// Remaining code remains unchanged
