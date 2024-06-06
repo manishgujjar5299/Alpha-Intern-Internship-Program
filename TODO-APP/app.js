@@ -3,7 +3,7 @@ const addBtn = document.getElementById('add-btn');
 const todoList = document.getElementById('todo-list');
 const filters = document.querySelectorAll('.filters button');
 const itemsLeft = document.getElementById('items-left');
-const clearAllBtn = document.getElementById('clear-all');
+const clearCompletedBtn = document.getElementById('clear-completed'); // Correct ID
 
 let todos = [];
 let activeFilter = 'all';
@@ -22,7 +22,7 @@ filters.forEach(filter => {
     });
 });
 
-clearAllBtn.addEventListener('click', clearAll);
+clearCompletedBtn.addEventListener('click', clearAll); // Corrected reference
 
 function addTodo() {
     const todoText = todoInput.value.trim();
@@ -80,16 +80,16 @@ function updateFilters() {
     if (activeFilterBtn) {
         activeFilterBtn.classList.add('active');
     }
-    updateTodoList();
+    applyFilter();
 }
 
-function updateTodoList() {
+function applyFilter() {
     todoList.innerHTML = '';
-    const filteredTodos = activeFilter === 'all'
-        ? todos
-        : activeFilter === 'active'
-            ? todos.filter(todo => !todo.completed)
-            : todos.filter(todo => todo.completed);
+    const filteredTodos = todos.filter(todo => {
+        if (activeFilter === 'all') return true;
+        if (activeFilter === 'active') return !todo.completed;
+        if (activeFilter === 'completed') return todo.completed;
+    });
     filteredTodos.forEach(todo => {
         const todoItem = createTodoItem(todo.text);
         if (todo.completed) {
@@ -100,8 +100,37 @@ function updateTodoList() {
 }
 
 function updateItemsLeft() {
-    const activeTodos = todos.filter(todo => !todo.completed);
-    itemsLeft.textContent = `${activeTodos.length} item${activeTodos.length !== 1 ? 's' : ''} left`;
+    const activeTodosCount = todos.filter(todo => !todo.completed).length;
+    itemsLeft.textContent = `${activeTodosCount} items left`;
 }
 
-updateItemsLeft();
+
+// Add swipe-to-delete event listeners
+let xDown = null;
+
+todoList.addEventListener('touchstart', handleTouchStart, false);        
+todoList.addEventListener('touchmove', handleTouchMove, false);
+
+function handleTouchStart(event) {
+    const firstTouch = event.touches[0];                                      
+    xDown = firstTouch.clientX;                                      
+};                                                
+
+function handleTouchMove(event) {
+    if (!xDown) {
+        return;
+    }
+
+    let xUp = event.touches[0].clientX;                                      
+    let xDiff = xUp - xDown;
+
+    if (xDiff > 0) {
+        // Swipe left, delete the todo item
+        const li = event.target.parentElement;
+        deleteTodo(li);
+    } 
+
+    xDown = null;
+};
+
+// Remaining code remains unchanged

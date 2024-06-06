@@ -141,7 +141,7 @@ h1 {
 
 .info {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;  /* Center the content horizontally */
     align-items: center;
     margin-top: 20px;
 }
@@ -149,6 +149,7 @@ h1 {
 #items-left {
     font-size: 14px;
     color: #666;
+    margin-right: 20px; /* Adds some space between the text and button */
 }
 
 #clear-completed {
