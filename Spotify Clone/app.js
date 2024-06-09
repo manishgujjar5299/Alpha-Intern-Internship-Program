@@ -18,13 +18,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const volumeControl = document.getElementById('volume-control');
     const libraryLink = document.querySelector('.nav-link[onclick="toggleLibraryContent()"]');
     const libraryContent = document.querySelector('.library-content');
+    const mainContent = document.querySelector('main');
 
     let songs = [
-        { title: 'Kinna Sona', artist: 'Marjaavaan', src: 'Kinna Sona Marjaavaan 320 Kbps.mp3', img: 'img3.jpg' },
-        { title: 'Dil Diyan Gallan', artist: 'Tiger Zinda Hai', src: 'Dil Diyan Gallan - Tiger Zinda Hai 320 Kbps.mp3', img: 'img5.jpg' },
-        { title: 'Chobbar', artist: 'Jordan Sandhu', src: 'Chobbar Jordan Sandhu 320 Kbps.mp3', img: 'img2.jpg' },
-        { title: 'Chann Warga', artist: 'Surjit Bhullar', src: 'Chann Warga - Surjit Bhullar 320 Kbps.mp3', img: 'img4.jpg' },
-        { title: '13 Pind', artist: 'Rajvir Jawanda', src: '13 Pind - Rajvir Jawanda 320 Kbps.mp3', img: 'img1.jpg' },
+        { title: 'Kinna Sona', artist: 'Marjaavaan', src: 'music/Kinna Sona Marjaavaan 320 Kbps.mp3', img: 'img3.jpg' },
+        { title: 'Dil Diyan Gallan', artist: 'Tiger Zinda Hai', src: 'music/Dil Diyan Gallan - Tiger Zinda Hai 320 Kbps.mp3', img: 'img5.jpg' },
+        { title: 'Chobbar', artist: 'Jordan Sandhu', src: 'music/Chobbar Jordan Sandhu 320 Kbps.mp3', img: 'img2.jpg' },
+        { title: 'Chann Warga', artist: 'Surjit Bhullar', src: 'music/Chann Warga - Surjit Bhullar 320 Kbps.mp3', img: 'img4.jpg' },
+        { title: '13 Pind', artist: 'Rajvir Jawanda', src: 'music/13 Pind - Rajvir Jawanda 320 Kbps.mp3', img: 'img1.jpg' },
         // { title: 'Chal Chaliye', artist: 'Sajid Ali', src: 'Chal Chaliye Sajjad Ali 320 Kbps.mp3', img: 'img7.jpg'}
     ];
 
@@ -179,3 +180,16 @@ document.getElementById('musiclibrary').addEventListener('click', function() {
       librarySection.style.display = 'none';
     }
   });
+
+
+  // New additions for linking sidebar items
+  document.querySelector('.library-content ul li:nth-child(4)').addEventListener('click', function() {
+    document.querySelector('.favorite-artists').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  document.querySelector('.library-content ul li:first-child').addEventListener('click', function() {
+    document.querySelector('.recently-played').scrollIntoView({ behavior: 'smooth' });
+  });
+
+
+  
