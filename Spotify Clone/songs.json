@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "title": "Chal Chaliye",
+        "artist": "Sajjad Ali",
+        "src": "music/Chal Chaliye Sajjad Ali 320 Kbps.mp3",
+        "albumArt": "img7.jpg"
+    },
+    {
+        "id": 2,
+        "title": "13 Pind",
+        "artist": "Artist 2",
+        "src": "music/13 Pind - Rajvir Jawanda 320 Kbps.mp3",
+        "albumArt": "img1.jpg"
+    },
+    {
+        "id": 3,
+        "title": "Song 3",
+        "artist": "Artist 3",
+        "src": "music/Chann Sitare - Ammy Virk.mp3",
+        "albumArt": "music/img3.jpg"
+    }
+    
+]

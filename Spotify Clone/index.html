@@ -10,89 +10,88 @@
 <body>
   <header>
     <nav class="fixed-header">
-        <div class="logo">
-          <img src="logo.png" alt="Spotify Logo">
-        </div>
-        <div class="search-bar">
-          <input type="text" placeholder="Search...">
-        </div>
-        <div class="nav-links">
-          <a href="#">Premium</a>
-          <a href="#">Help</a>
-          <a href="#">Download</a>
-          <a href="#" id="profile-link">Username</a>
-        </div>
-      </nav>
+      <div class="logo">
+        <img src="logo.png" alt="Spotify Logo">
+      </div>
+      <div class="search-bar">
+        <input type="text" placeholder="Search...">
+      </div>
+      <div class="nav-links">
+        <a href="#">Premium</a>
+        <a href="#">Help</a>
+        <a href="#">Download</a>
+        <a href="#" id="profile-link">Username</a>
+      </div>
+    </nav>
   </header>
   
-    <div class="main-content">
+  <div class="main-content">
     <aside class="sidebar">
-        <div class="navbar">
-          <div class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fas fa-home"></i>
-              Home
-            </a>
+      <div class="navbar">
+        <div class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="fas fa-home"></i>
+            Home
+          </a>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="fas fa-search"></i>
+            Search
+          </a>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link" onclick="toggleLibraryContent()">
+            <i class="fas fa-book"></i>
+            Your Library
+          </a>
+        </div>
+        <div class="nav-item2">
+          <a href="#" class="nav-link2">
+            <i class="fas fa-square-plus"></i>
+            Create Playlist
+          </a>
+        </div>
+        <div class="nav-item2">
+          <a href="#" class="nav-link2">
+            <button class="like-button" data-song-id="${song.id}"><i class="far fa-heart"></i></button>
+            Liked Songs
+          </a>
+        </div>
+      </div>
+      <div class="library-content">
+        <ul>
+          <li><i class="fas fa-history"></i> Recently Played</li>
+          <li><i class="fas fa-podcast"></i> Podcasts</li>
+          <li><i class="fas fa-music"></i> Albums</li>
+          <li><i class="fas fa-user-friends"></i> Artists</li>
+          <li><i class="fas fa-music"></i> Songs</li>
+        </ul>
+        <div class="tabs">
+          <button class="active" onclick="showPlaylists()">Playlists</button>
+          <button onclick="showPodcasts()">Podcasts</button>
+        </div>
+        <div class="playlist">
+          <div class="playlist-img">
+            <img src="img7.jpg" alt="Playlist Image">
           </div>
-          <div class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fas fa-search"></i>
-              Search
-            </a>
-          </div>
-          <div class="nav-item">
-            <a href="#" class="nav-link" onclick="toggleLibraryContent()">
-              <i class="fas fa-book"></i>
-              Your Library
-            </a>
-          </div>
-          <div class="nav-item2">
-            <a href="#" class="nav-link2">
-              <i class="fas fa-square-plus"></i>
-              Create Playlist
-            </a>
-          </div>
-          <div class="nav-item2">
-            <a href="#" class="nav-link2">
-              <button class="like-button" data-song-id="${song.id}"><i class="far fa-heart"></i></button>
-              Liked Songs
-            </a>
+          <div class="playlist-details">
+            <p>Chal Chaliye</p>
+            <p>Sajjad Ali</p>
           </div>
         </div>
-        <div class="library-content">
-          <ul>
-            <li><i class="fas fa-history"></i> Recently Played</li>
-            <li><i class="fas fa-podcast"></i> Podcasts</li>
-            <li><i class="fas fa-music"></i> Albums</li>
-            <li><i class="fas fa-user-friends"></i> Artists</li>
-            <li><i class="fas fa-music"></i> Songs</li>
-          </ul>
-          <div class="tabs">
-            <button class="active" onclick="showPlaylists()">Playlists</button>
-            <button onclick="showPodcasts()">Podcasts</button>
+        <div class="playlist">
+          <div class="playlist-img">
+            <img src="playlist2.jpg" alt="Playlist Image">
           </div>
-          <div class="playlist">
-            <div class="playlist-img">
-              <img src="img7.jpg" alt="Playlist Image">
-            </div>
-            <div class="playlist-details">
-              <p>Chal Chaliye</p>
-              <p>Sajjad Ali</p>
-            </div>
-          </div>
-          <div class="playlist">
-            <div class="playlist-img">
-              <img src="playlist2.jpg" alt="Playlist Image">
-            </div>
-            <div class="playlist-details">
-              <p>Playlist 2</p>
-              <p>By User</p>
-            </div>
+          <div class="playlist-details">
+            <p>Playlist 2</p>
+            <p>By User</p>
           </div>
         </div>
+      </div>
     </aside>
   
- 
     <main>
       <section class="playlist" id="playlist-section">
         <h2>Top Trending India</h2>
@@ -107,53 +106,46 @@
         <audio id="playlist-audio" src="Chal Chaliye Sajjad Ali 320 Kbps.mp3"></audio> <!-- Add your actual song file path here -->
 
         <div>
-            <ul class="song-list">
-                <h1>Song list</h1>
-
-            </ul>
+          <ul class="song-list">
+            <h1>Song list</h1>
+          </ul>
         </div>
       </section>
+
       <section class="recently-played">
         <h2>Recently Played</h2>
-        <div class="rectangle-grid">
-        </div>
+        <div class="rectangle-grid"></div>
       </section>
 
       <section class="favorite-artists">
         <h2>Favorite Artists</h2>
         <div class="circle-grid">
-            <div class="circle-item">
-                <div class="circle">
-                    <img src="img11.jpg" alt="Jordan Sandhu">
-                </div>
-                <p><a href="jordan sandhu.html">Jordan Sandhu</a></p>
+          <div class="circle-item">
+            <div class="circle">
+              <img src="img11.jpg" alt="Jordan Sandhu">
             </div>
-            <div class="circle-item">
-                <div class="circle">
-                    <img src="img10.jpg" alt="Artist 2">
-                </div>
-                <p><a href="mankrit.html">Mankirt Aulakh</a></p>
+            <p><a href="jordan sandhu.html">Jordan Sandhu</a></p>
+          </div>
+          <div class="circle-item">
+            <div class="circle">
+              <img src="img10.jpg" alt="Artist 2">
             </div>
-            <div class="circle-item">
-                <div class="circle">
-                    <img src="img9.jpg" alt="Artist 3">
-                </div>
-                <p><a href="gurnam.html">Gurnam Bhullar</a></p>
+            <p><a href="mankrit.html">Mankirt Aulakh</a></p>
+          </div>
+          <div class="circle-item">
+            <div class="circle">
+              <img src="img9.jpg" alt="Artist 3">
             </div>
-            <div class="circle-item">
-                <div class="circle">
-                    <img src="img8.jpg" alt="Artist 4">
-                </div>
-                <p><a href="rnait.html">R Nait </a></p>
+            <p><a href="gurnam.html">Gurnam Bhullar</a></p>
+          </div>
+          <div class="circle-item">
+            <div class="circle">
+              <img src="img8.jpg" alt="Artist 4">
             </div>
-            <!-- <div class="circle-item">
-                <div class="circle">
-                    <img src="img12.jpg" alt="Artist 5">
-                </div>
-                <p><a href="ammy.html">Ammy Virk</a></p>
-            </div> -->
+            <p><a href="rnait.html">R Nait </a></p>
+          </div>
         </div>
-    </section>
+      </section>
     
       <section class="library" id="library-section" style="display: none;">
         <h2>Your Library</h2>
@@ -166,36 +158,34 @@
   
   <footer>
     <div class="player">
-        <div class="album-info">
-            <img src="album-art.jpg" alt="Album Art" id="album-art">
-            <div class="details">
-                <h2 id="song-title">Song Title</h2>
-                <h3 id="artist-name">Artist Name</h3>
-            </div>
+      <div class="album-info">
+        <img src="album-art.jpg" alt="Album Art" id="album-art">
+        <div class="details">
+          <h2 id="song-title">Song Title</h2>
+          <h3 id="artist-name">Artist Name</h3>
         </div>
-        <div class="player-controls">
-            <div class="playback-buttons">
-                <button id="prev"><i class="fas fa-backward"></i></button>
-                <button id="play-pause"><i class="fas fa-play"></i></button>
-                <button id="next"><i class="fas fa-forward"></i></button>
-            </div>
-            <div class="time-controls">
-                <span id="current-time">0:00</span>
-                <input type="range" id="progress-bar" value="0" min="0" max="100">
-                <span id="duration">0:00</span>
-            </div>
+      </div>
+      <div class="player-controls">
+        <div class="playback-buttons">
+          <button id="prev"><i class="fas fa-backward"></i></button>
+          <button id="play-pause"><i class="fas fa-play"></i></button>
+          <button id="next"><i class="fas fa-forward"></i></button>
         </div>
-        <div class="volume-controls">
-            <i class="fas fa-volume-down"></i>
-            <input type="range" id="volume-control" value="100" min="0" max="100">
-            <i class="fas fa-volume-up"></i>
+        <div class="time-controls">
+          <span id="current-time">0:00</span>
+          <input type="range" id="progress-bar" value="0" min="0" max="100">
+          <span id="duration">0:00</span>
         </div>
-        <audio id="audio-player" src=""></audio>
+      </div>
+      <div class="volume-controls">
+        <i class="fas fa-volume-down"></i>
+        <input type="range" id="volume-control" value="100" min="0" max="100">
+        <i class="fas fa-volume-up"></i>
+      </div>
+      <audio id="audio-player" src=""></audio>
     </div>
-</footer>
+  </footer>
 
-  
   <script src="app.js"></script>
 </body>
 </html>
- 

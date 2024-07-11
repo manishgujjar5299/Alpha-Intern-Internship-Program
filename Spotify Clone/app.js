@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const libraryContent = document.querySelector('.library-content');
     const mainContent = document.querySelector('main');
     const playlistAudio = document.getElementById('playlist-audio');
+    const homeLink = document.querySelector('.nav-link[href="#"]');
+    const searchLink = document.querySelector('.nav-link[href="#"]');
+    const createPlaylistLink = document.querySelector('.nav-link2[href="#"]');
     const likedSongsLink = document.querySelector('.nav-link2[href="#"]');
     const likedSongsList = document.createElement('ul');
     likedSongsList.classList.add('liked-songs-list');
@@ -96,18 +99,34 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function addToRecentlyPlayed(song) {
-        let recentlyPlayed = document.querySelector('.rectangle-grid');
-        let div = document.createElement('div');
-        div.classList.add('rectangle-item');
-        div.innerHTML = `<div class="rectangle" style="background-image: url('${song.img}');"></div>
-                         <p>${song.title}</p>`;
-        recentlyPlayed.appendChild(div);
-
-        if (recentlyPlayed.childElementCount >= 4) {
-            recentlyPlayed.removeChild(recentlyPlayed.firstChild);
-        }
+        let recentlyPlayed = JSON.parse(localStorage.getItem('recentlyPlayed')) || [];
         
-        recentlyPlayed.appendChild(div);
+        // Remove the song if it's already in the list
+        recentlyPlayed = recentlyPlayed.filter(s => s.id !== song.id);
+        
+        // Add the song to the beginning of the list
+        recentlyPlayed.unshift(song);
+        
+        // Keep only the last 4 songs
+        recentlyPlayed = recentlyPlayed.slice(0, 4);
+        
+        // Save to localStorage
+        localStorage.setItem('recentlyPlayed', JSON.stringify(recentlyPlayed));
+        
+        // Update the UI
+        updateRecentlyPlayedUI(recentlyPlayed);
+    }
+
+    function updateRecentlyPlayedUI(recentlyPlayed) {
+        let recentlyPlayedElement = document.querySelector('.rectangle-grid');
+        recentlyPlayedElement.innerHTML = '';
+        recentlyPlayed.forEach(song => {
+            let div = document.createElement('div');
+            div.classList.add('rectangle-item');
+            div.innerHTML = `<div class="rectangle" style="background-image: url('${song.img}');"></div>
+                             <p>${song.title}</p>`;
+            recentlyPlayedElement.appendChild(div);
+        });
     }
 
     function addToLibrary(song) {
@@ -179,11 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     libraryLink.addEventListener('click', function() {
-        if (libraryContent.style.display === 'block') {
-            libraryContent.style.display = 'none';
-        } else {
-            libraryContent.style.display = 'block';
-        }
+        libraryContent.style.display = libraryContent.style.display === 'block' ? 'none' : 'block';
     });
 
     volumeControl.addEventListener('input', function() {
@@ -194,11 +209,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('musiclibrary').addEventListener('click', function() {
         var librarySection = document.querySelector('.left .library');
-        if (librarySection.style.display === 'none' || librarySection.style.display === '') {
-            librarySection.style.display = 'block';
-        } else {
-            librarySection.style.display = 'none';
-        }
+        librarySection.style.display = (librarySection.style.display === 'none' || librarySection.style.display === '') ? 'block' : 'none';
     });
 
     document.querySelector('.library-content ul li:nth-child(4)').addEventListener('click', function() {
@@ -209,21 +220,36 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('.recently-played').scrollIntoView({ behavior: 'smooth' });
     });
 
-    // New function to toggle like status of a song
     function toggleLikeSong() {
         if (currentSong) {
             currentSong.liked = !currentSong.liked;
             updateLikeButton();
             updateLikedSongs();
+            
+            // Update the song in the songs array
+            const songIndex = songs.findIndex(song => song.id === currentSong.id);
+            if (songIndex !== -1) {
+                songs[songIndex].liked = currentSong.liked;
+            }
+            
+            // Save liked songs to localStorage
+            saveLikedSongs();
         }
     }
 
-    // New function to update the like button
     function updateLikeButton() {
-        likeButton.innerHTML = currentSong && currentSong.liked ? '<i class="fas fa-heart"></i>' : '<i class="far fa-heart"></i>';
+        if (currentSong && currentSong.liked) {
+            likeButton.innerHTML = '<i class="fas fa-heart" style="color: red;"></i>';
+        } else {
+            likeButton.innerHTML = '<i class="far fa-heart"></i>';
+        }
     }
 
-    // Update the liked songs list
+    function saveLikedSongs() {
+        const likedSongs = songs.filter(song => song.liked);
+        localStorage.setItem('likedSongs', JSON.stringify(likedSongs));
+    }
+
     function updateLikedSongs() {
         likedSongsList.innerHTML = '';
         const likedSongs = songs.filter(song => song.liked);
@@ -237,17 +263,77 @@ document.addEventListener('DOMContentLoaded', function() {
             li.addEventListener('click', () => playSong(song));
             likedSongsList.appendChild(li);
         });
+        
+        // Update the count in the sidebar
+        const likedSongsCount = document.querySelector('.nav-link2[href="#"] span');
+        if (likedSongsCount) {
+            likedSongsCount.textContent = `(${likedSongs.length})`;
+        }
     }
 
-    // Add event listener to the like button
+    function loadLikedSongs() {
+        const likedSongs = JSON.parse(localStorage.getItem('likedSongs')) || [];
+        likedSongs.forEach(likedSong => {
+            const song = songs.find(s => s.id === likedSong.id);
+            if (song) {
+                song.liked = true;
+            }
+        });
+        updateLikedSongs();
+    }
+
     likeButton.addEventListener('click', toggleLikeSong);
 
-    // Add event listener to the "Liked Songs" link
     likedSongsLink.addEventListener('click', function(event) {
         event.preventDefault();
         mainContent.innerHTML = ''; // Clear main content
         mainContent.appendChild(likedSongsList); // Display liked songs
     });
+
+    function showHome() {
+        mainContent.innerHTML = '<h1>Home</h1><p>Welcome to your Spotify clone!</p>';
+    }
+
+    function showSearch() {
+        mainContent.innerHTML = '<h1>Search</h1><input type="text" placeholder="Search for songs, artists, or albums">';
+    }
+
+    function showLibrary() {
+        mainContent.innerHTML = '<h1>Your Library</h1>';
+        mainContent.appendChild(libraryList);
+    }
+
+    function createPlaylist() {
+        mainContent.innerHTML = '<h1>Create Playlist</h1><p>Feature coming soon!</p>';
+    }
+
+    homeLink.addEventListener('click', function(event) {
+        event.preventDefault();
+        showHome();
+    });
+
+    searchLink.addEventListener('click', function(event) {
+        event.preventDefault();
+        showSearch();
+    });
+
+    libraryLink.addEventListener('click', function(event) {
+        event.preventDefault();
+        showLibrary();
+    });
+
+    createPlaylistLink.addEventListener('click', function(event) {
+        event.preventDefault();
+        createPlaylist();
+    });
+
+    // Load liked songs and recently played on startup
+    loadLikedSongs();
+    let recentlyPlayed = JSON.parse(localStorage.getItem('recentlyPlayed')) || [];
+    updateRecentlyPlayedUI(recentlyPlayed);
+
+    // Modify the "Liked Songs" link in the sidebar to show the count
+    likedSongsLink.innerHTML += ' <span>(0)</span>';
 });
 
 function toggleLibraryContent() {
